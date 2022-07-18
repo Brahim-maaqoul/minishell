@@ -6,11 +6,27 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 01:10:19 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/07/17 01:12:43 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/07/18 15:13:40 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t			i;
+	unsigned char	*pt1;
+	unsigned char	*pt2;
+
+	if (n == 0)
+		return (0);
+	pt1 = (unsigned char *) s1;
+	pt2 = (unsigned char *) s2;
+	i = 0;
+	while (pt1[i] && pt2[i] && pt1[i] == pt2[i] && i < n - 1)
+		i++;
+	return (pt1[i] - pt2[i]);
+}
 
 size_t	ft_strlen(const char *str)
 {
