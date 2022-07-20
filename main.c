@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 21:33:57 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/07/18 15:25:47 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/07/20 22:16:40 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int main(int ac, char **av)
 {
     char ez[100];
     char *line, **split, **path, *tmp;
-    int i, pid;
+    int i = 0, pid;
     struct stat s;
     while (1)
     {
@@ -23,10 +23,27 @@ int main(int ac, char **av)
         split = ft_split(line, ' ');
         path = ft_split(getenv("PATH"), ':');
         add_history(line);
-        if (!ft_strncmp(line, "pwd", 3))
+        if (!ft_strncmp(split[0], "pwd", 3))
             printf("%s\n", getcwd(ez, sizeof(ez)));
-        else if (!ft_strncmp(line, "cd", 2))
+        else if (!ft_strncmp(split[0], "cd", 2))
             chdir(split[1]);
+        else if (!ft_strncmp(split[0], "echo", 4))
+        {
+            if (split[1] && !ft_strncmp(split[1], "-n", 2))
+                i = 2;
+            else
+                i = 1;
+            while (split[i])
+            {
+                if (!split[i + 1])
+                    printf("%s", split[i++]);
+                else
+                    printf("%s ", split[i++]);
+            }
+
+            if (!split[1] || ft_strncmp(split[1], "-n", 2))
+                printf("\n");
+        }
         else
         {
             i = 0;
