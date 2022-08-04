@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 21:33:57 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/07/20 22:16:40 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/02 21:09:13 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int main(int ac, char **av)
     struct stat s;
     while (1)
     {
+        rl_catch_signals = 0;
         line = readline("minishell> ");
+        if (!line)
+            exit(0);
         split = ft_split(line, ' ');
         path = ft_split(getenv("PATH"), ':');
         add_history(line);
@@ -40,9 +43,12 @@ int main(int ac, char **av)
                 else
                     printf("%s ", split[i++]);
             }
-
             if (!split[1] || ft_strncmp(split[1], "-n", 2))
                 printf("\n");
+        }
+        else if (!ft_strncmp(split[0], "env", 3))
+        {
+            i = 0;
         }
         else
         {
@@ -67,6 +73,8 @@ int main(int ac, char **av)
         }
         // printf("%s\n", getenv("PATH"));
         // i++;
+        free(line);
     }
+
     // read(0, command, 4);
 }
