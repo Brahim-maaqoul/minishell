@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:14:50 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/04 23:24:17 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/05 18:14:44 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ typedef struct s_mystruct
 {
     int pid;
     char    *line;
-    char *word;
+    char    *word;
     char    **path;
     char    **splited;
+	char 	*name;
+	char 	*value;
     tokens  flags;
     struct s_mystruct *left;
     struct s_mystruct *right;
@@ -48,6 +50,8 @@ size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *src);
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strchr(const char *str, int c);
+int	ft_atoi(const char	*str);
 
 
 # endif

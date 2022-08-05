@@ -6,20 +6,22 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 21:33:57 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/02 21:09:13 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/05 16:21:29 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
     char ez[100];
     char *line, **split, **path, *tmp;
     int i = 0, pid;
     struct stat s;
+    t_mystruct list;
+	// list.splited = ft_split(env[0], '=');
     while (1)
     {
-        rl_catch_signals = 0;
+        // rl_catch_signals = 0;
         line = readline("minishell> ");
         if (!line)
             exit(0);
@@ -49,6 +51,15 @@ int main(int ac, char **av)
         else if (!ft_strncmp(split[0], "env", 3))
         {
             i = 0;
+			while (env[i])
+			{
+				list.splited = ft_split(env[i], '=');
+				list.name= list.splited[0];
+				list.value = list.splited[1];
+				printf("%s=",list.name);
+				printf("%s\n", list.value);
+				i++;
+			}
         }
         else
         {

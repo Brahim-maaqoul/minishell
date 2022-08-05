@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 02:32:42 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/04 23:30:32 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/05 16:27:25 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void    get_tokens(t_mystruct *list)
     	// printf("%s", list->splited[i++]);
 }
 
-int main()
-{
-	t_mystruct list;
- 	 list.line = readline("minishell> ");
-	 get_tokens(&list);
-	 printf("%s\n", list.word);
-	 printf("%c\n", list.flags);
-}
+// int main()
+// {
+// 	t_mystruct list;
+//  	 list.line = readline("minishell> ");
+// 	 get_tokens(&list);
+// 	 printf("%s\n", list.word);
+// 	 printf("%c\n", list.flags);
+// }
