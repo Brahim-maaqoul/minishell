@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:49:36 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/09 22:37:13 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/14 04:25:47 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 }
 
-t_list	*ft_lstnew(void *content, tokens flag)
+t_list	*ft_lstnew(void *content, int flag)
 {
 	t_list	*new;
 

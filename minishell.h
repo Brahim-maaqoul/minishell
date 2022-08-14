@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 18:14:50 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/09 22:48:12 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/14 04:21:32 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 #include <sys/stat.h>
 #include <signal.h>
 
-typedef enum    token
+typedef enum    e_token
 {
     PIPE = '|',
     left_red = '<',
     right_red = '>',
     space = ' ',
     word
-}	tokens;
+}	t_tokens;
 
 typedef struct s_list
 {
@@ -39,7 +39,7 @@ typedef struct s_list
     char    **splited;
 	char 	*name;
 	char 	*value;
-    tokens  flags;
+    t_tokens  flags;
     struct	s_list	*next;
 }       t_list;
 
@@ -54,7 +54,7 @@ int	ft_atoi(const char	*str);
 int	ft_isdigit(int n);
 int ft_lstsize(t_list *lst);
 void ft_lstadd_front(t_list **lst, t_list *new);
-t_list	*ft_lstnew(void *content, tokens flag);
+t_list	*ft_lstnew(void *content, int flag);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int	check_pipe(t_list *list, int i);
 int	check_leftred(t_list *list, int i);
@@ -62,6 +62,7 @@ int	check_rightred(t_list *list, int i);
 int	check_space(t_list *list, int i);
 void	check_word(t_list *list);
 void    get_tokens(t_list *list);
+char	*ft_strncpy(char	*dest, char	*src, unsigned	int	n);
 
 
 # endif

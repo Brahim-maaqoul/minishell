@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 21:33:57 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/06 11:53:37 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/10 02:24:51 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int ac, char **av, char **env)
 	// list.splited = ft_split(env[0], '=');
     while (1)
     {
-        // rl_catch_signals = 0;
+        rl_catch_signals = 0;
         line = readline("minishell> ");
         if (!line)
             exit(0);
