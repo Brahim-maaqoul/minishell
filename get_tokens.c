@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 02:32:42 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/15 23:52:34 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/16 00:10:32 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int main()
  	list->line = readline("minishell> ");
 	 int i = 0;
 	 check_word(list);
-	//  while (list->next)
-	// {
-	// 	printf("%s\n", list->content);
-	// 	// printf("%u\n", list->flags);
-	// 	list = list->next;
-	// 	// i++;
-	// }
+	 while (list)
+	{
+		printf("%s\n", list->content);
+		// printf("%u\n", list->flags);
+		list = list->next;
+		// i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:41:54 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/15 23:52:52 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/16 00:42:50 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	check_word(t_list *list)
 	char	*tmp1;
 	char	*tmp2;
 	char	*tmp;
-	// t_list	*new
-	// new = list;
+	t_list	*new;
+	new = list;
 	i = 0;
 	j = i;
 	// list->content = ft_strdup("");
@@ -72,15 +72,19 @@ void	check_word(t_list *list)
 		{
 			// list->content = ft_substr(list->line, i, get_pos(list->line, PIPE));
 			// printf("%d\n", get_pos(list->line, PIPE));
-			list->content = ft_strncpy(tmp1, list->line, i - j);
+			tmp2 = ft_strncpy(tmp1, list->line, i - j);
 			// printf("%s\n", tmp2);
 			// printf("%s\n", "hmm0");
-			j = i;
-			ft_lstadd_back(&list, ft_lstnew(list->content, word));
-			// printf("%s\n", list->content);
+			new->content = tmp2;
+			new->flags = word;
 			tmp2 = ft_substr(list->line, i, 1);
-			ft_lstadd_back(&list, ft_lstnew(tmp2, PIPE));
-			printf("%s\n", list->content);
+			new = new->next;
+			new = ft_lstnew(tmp2, word);
+			j = i;
+			// printf("%s\n", new->content);
+			ft_lstadd_back(&list, new);
+			// ft_lstadd_back(&new, ft_lstnew(tmp2, PIPE));
+			// printf("%s\n", list->next->content);
 
 		}
 		i++;
