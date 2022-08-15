@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 02:55:25 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/14 02:55:42 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/15 23:26:32 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *dst, const void *src, int n)
 {
-	int			i;
+	int				i;
 	unsigned char	*ptr1;
 	unsigned char	*ptr2;
 

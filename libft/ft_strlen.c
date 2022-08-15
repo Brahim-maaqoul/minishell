@@ -6,13 +6,13 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 02:52:13 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/14 02:52:49 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/15 23:26:48 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 

@@ -6,28 +6,28 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 23:37:03 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/14 02:42:16 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/15 23:22:47 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
-#include "lexer/lexer.h"
-#include "libft/libft.h"
+# include "lexer/lexer.h"
+# include "libft/libft.h"
 
 typedef struct s_tree
 {
-	char	*token;
-	char	*cmd;
+	char			*token;
+	char			*cmd;
 	struct s_tree	*left;
-	struct s_tree	*right; 
+	struct s_tree	*right;
 }				t_tree;
 
 t_tree	*ft_treenew(char *token, char *cmd);
