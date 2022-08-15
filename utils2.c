@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:49:36 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/14 04:25:47 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/15 23:42:33 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_list	*ft_lstnew(void *content, int flag)
 	new = (t_list *) malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
-	new->content = content;
+	new->content = (char *)content;
 	new->flags = flag;
 	new->next = NULL;
 	return (new);

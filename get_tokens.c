@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 02:32:42 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/14 04:25:01 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/15 23:52:34 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,18 @@ void    get_tokens(t_list *list)
 
 int main()
 {
-	t_list list;
+	t_list *list;
 
 	// list = NULL;
-	// list = (t_list *) malloc(sizeof(t_list));
- 	list.line = readline("minishell> ");
+	list = (t_list *) malloc(sizeof(t_list));
+ 	list->line = readline("minishell> ");
 	 int i = 0;
-	 check_word(&list);
-	//  while (list)
+	 check_word(list);
+	//  while (list->next)
 	// {
-		printf("%s\n", list.content);
-		// printf("%u\n", list->flags);
-		// list = list->next;
-		// i++;
+	// 	printf("%s\n", list->content);
+	// 	// printf("%u\n", list->flags);
+	// 	list = list->next;
+	// 	// i++;
 	// }
 }
