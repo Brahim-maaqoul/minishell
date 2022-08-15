@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 03:05:59 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/14 03:06:39 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/15 04:12:33 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,39 @@ int		check_ws(char c)
 	return (0);
 }
 
+int		check_q(char c, int q)
+{
+	
+	if (!q && c == '"')
+		return (1);
+	if (q && c == '"')
+		return (0);
+	return (q);
+}
+
 void	rm_extra_sp(char *n_cmd)
 {
 	int	i;
 	int	j;
 	int	p;
+	int	q;
+	char	c;
 
 	i = 0;
+	q = 0;
+	c = 0;
 	while(n_cmd[i])
 	{
 		p = 0;
+		q = 0;
+		if (n_cmd[i] == '"' || n_cmd[i] == '\'')
+		{
+			q = i + 1;
+			c = n_cmd[i];
+			while (n_cmd[q] != c && n_cmd[q])
+				q++;
+			i = q;
+		}
 		if (n_cmd[i] == ' ')
 		{
 			p = 1;
