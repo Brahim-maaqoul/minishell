@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 00:28:31 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/16 02:14:32 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2022/08/09 00:06:20 by orekabe           #+#    #+#             */
+/*   Updated: 2022/08/16 03:56:04 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-t_list	*ft_lstnew(void *content, int token)
+int	main(void)
 {
-	t_list	*new;
+	char	*cmd;
+	char	*n_cmd;
+	t_list	*lst;
 
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->content = content;
-	new->token = token;
-	new->next = NULL;
-	return (new);
+	lst = NULL;
+	cmd = readline("minishell :");
+	n_cmd = NULL;
+	lst = lexer(cmd, n_cmd, lst);
+	while (lst)
+	{
+		printf("%s ----> %d\n", lst->content, lst->token);
+		lst = lst->next;
+	}
+	
 }
