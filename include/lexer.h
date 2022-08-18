@@ -6,15 +6,15 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 22:52:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/15 23:26:07 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/16 03:39:40 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 
-# include "../minishell.h"
-# include "../libft/libft.h"
+# include "minishell.h"
+# include "libft.h"
 
 char	*lexer(char *cmd, char *n_cmd);
 int		check_ws(char c);

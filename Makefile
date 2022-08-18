@@ -6,7 +6,7 @@
 #    By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/14 03:35:01 by orekabe           #+#    #+#              #
-#    Updated: 2022/08/14 04:05:47 by orekabe          ###   ########.fr        #
+#    Updated: 2022/08/16 03:45:58 by orekabe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ RFLAGS = -lreadline
 
 NAME = minishell
 
-HEADERS = minishell.h libft/libft.h lexer/lexer.h
+INC = -I./include
+
+HEADERS = include/minishell.h include/libft.h include/lexer.h
 
 LIBFT_SRC = libft/ft_bzero.c libft/ft_calloc.c libft/ft_memcpy.c libft/ft_memmove.c \
 	libft/ft_strdup.c libft/ft_strlen.c libft/ft_strncpy.c
@@ -32,7 +34,10 @@ OBJ = $(SRC:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@ $(RFLAGS)
+	$(CC) $(CFLAGS) $(RFLAGS) $^ -o $@
+
+$(OBJ):$(SRC) $(HEADERS)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
 	rm -rf $(OBJ)
