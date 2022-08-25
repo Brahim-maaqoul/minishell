@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:03:15 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/25 02:14:43 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/25 23:18:35 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ t_list	*lexer(char *cmd, char *n_cmd, t_list *lst)
 	n_cmd = ft_strncpy(cmd, n_cmd, ft_strlen(cmd));
 	add_need_sp(cmd, n_cmd);
 	rm_extra_sp(n_cmd);
-	printf("%s\n", n_cmd);
+	n_cmd = get_clean_cmd(n_cmd);
+	// printf("%s\n", n_cmd);
 	lst = tokenizer(lst, n_cmd);
 	return (lst);
 }

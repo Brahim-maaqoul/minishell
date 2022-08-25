@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 22:52:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/18 03:29:31 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/25 23:20:19 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int		check_sc(char c);
 int		check_q(char c, int q);
 void	rm_extra_sp(char *n_cmd);
 void	add_need_sp(char *cmd, char *n_cmd);
+char	*get_clean_cmd(char *n_cmd);
 
 #endif

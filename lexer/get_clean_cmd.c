@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 03:05:59 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/15 23:53:43 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/25 23:21:50 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	add_need_sp(char *cmd, char *n_cmd)
 	{
 		if (check_sc(cmd[i]))
 		{
-			if (cmd[i - 1] != ' ' && cmd[i] != cmd[i - 1])
+			if (cmd[i - 1] != ' ' && cmd[i] != cmd[i - 1] && i > 0)
 			{
 				j = i + (++p);
 				ft_memmove(n_cmd + j + 1, n_cmd + j, ft_strlen(cmd) - i);
@@ -83,4 +83,17 @@ void	add_need_sp(char *cmd, char *n_cmd)
 			}
 		}
 	}
+}
+
+char	*get_clean_cmd(char *n_cmd)
+{
+	int	len;
+
+	while (*n_cmd == ' ')
+		n_cmd++;
+	len = ft_strlen(n_cmd) - 1;
+	while (n_cmd[len] == ' ')
+		len--;
+	n_cmd[len + 1] = '\0';
+	return (n_cmd);
 }
