@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 00:06:20 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/15 23:33:03 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/25 02:14:18 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@ int	main(void)
 {
 	char	*cmd;
 	char	*n_cmd;
+	t_list	*lst;
 
+	lst = NULL;
 	cmd = readline("minishell :");
 	n_cmd = NULL;
-	n_cmd = lexer(cmd, n_cmd);
-	printf("%s\n", n_cmd);
+	lst = lexer(cmd, n_cmd, lst);
+	// while (lst)
+	// {
+	// 	printf("%s ----> %d\n", lst->content, lst->token);
+	// 	lst = lst->next;
+	// }
 }

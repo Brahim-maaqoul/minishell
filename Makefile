@@ -1,41 +1,44 @@
-CC = cc
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/14 03:35:01 by orekabe           #+#    #+#              #
+#    Updated: 2022/08/18 04:13:34 by orekabe          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-LDFLAGS= -L/Users/bmaaqoul/.brew/opt/readline/lib
-CPPFLAGS= -I/Users/bmaaqoul/.brew/opt/readline/include
+CC = CC
 
-CFLAGS = $(CPPFLAGS) -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Wextra -Werror
 
-INC = -I./include
-
-HEADERS = include/minishell.h include/libft.h include/lexer.h
-
-ODIR = obj
-
-LIBFT_SRC = libft/ft_bzero libft/ft_calloc libft/ft_memcpy libft/ft_memmove \
-    libft/ft_strndup libft/ft_strlen libft/ft_strncpy libft/ft_lstnew libft/ft_lstclear \
-	ft_lstadd_back
-
-LEXER_SRC = lexer/get_clean_cmd lexer/lexer
-
-FILES = minishel $(LIBFT_SRC) $(LEXER_SRC)
-
-OBJ = $(addprefix $(ODIR)/, $(FILES:=.o))
+RFLAGS = -lreadline
 
 NAME = minishell
+
+HEADERS = minishell.h libft/libft.h lexer/lexer.h
+
+LIBFT_SRC = libft/ft_bzero.c libft/ft_calloc.c libft/ft_memcpy.c libft/ft_memmove.c \
+	libft/ft_strndup.c libft/ft_strlen.c libft/ft_strncpy.c libft/ft_strncmp.c \
+	libft/ft_lstnew.c libft/ft_lstadd_back.c libft/ft_lstclear.c
+
+LEXER_SRC = lexer/get_clean_cmd.c lexer/lexer.c
+
+SRC = minishell.c $(LIBFT_SRC) $(LEXER_SRC)
+
+OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -lreadline $(LDFLAGS) $^ -o $@
-
-$(ODIR)/%.o: %.c $(HEADERS)
-	mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(RFLAGS)
 
 clean:
-	rm -rf $(ODIR)
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
-
+	
 re: fclean all
