@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 00:28:31 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/18 04:14:13 by orekabe          ###   ########.fr       */
+/*   Created: 2022/08/14 02:54:37 by orekabe           #+#    #+#             */
+/*   Updated: 2022/08/18 04:12:55 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content, int token)
+char	*ft_strndup(char *s, int size)
 {
-	t_list	*new;
+	int		i;
+	char	*ptr;
 
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
+	i = 0;
+	ptr = (char *)malloc(size * sizeof(char));
+	if (!(ptr))
 		return (NULL);
-	new->content = content;
-	new->token = token;
-	new->next = NULL;
-	return (new);
+	while (s[i] && i < size)
+	{
+		ptr[i] = s[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }

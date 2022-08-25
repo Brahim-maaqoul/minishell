@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 23:37:03 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/15 23:22:47 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/18 03:26:34 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-# include "lexer/lexer.h"
 # include "libft/libft.h"
+# include "lexer/lexer.h"
 
 typedef struct s_tree
 {

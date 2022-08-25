@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 22:52:18 by orekabe           #+#    #+#             */
-<<<<<<< HEAD:include/lexer.h
-/*   Updated: 2022/08/16 03:39:40 by orekabe          ###   ########.fr       */
-=======
-/*   Updated: 2022/08/16 03:34:04 by bmaaqoul         ###   ########.fr       */
->>>>>>> d0869b48ab9aa372797e4953fd9d89be54ab45ac:include/lexer.h
+/*   Updated: 2022/08/18 03:29:31 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
 
-# include "minishell.h"
-# include "libft.h"
+# include "../libft/libft.h"
 
 typedef enum e_tokens
 {

@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/14 02:54:37 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/14 02:54:52 by orekabe          ###   ########.fr       */
+/*   Created: 2022/08/18 04:09:35 by orekabe           #+#    #+#             */
+/*   Updated: 2022/08/18 04:12:05 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(char *s)
+int	ft_strncmp(char *s1, char *s2, int n)
 {
-	int		i;
-	char	*ptr;
+	int 			i;
+	unsigned char	*pt1;
+	unsigned char	*pt2;
 
-	i = ft_strlen(s) + 1;
-	ptr = (char *)malloc(i * sizeof(char));
-	if (!(ptr))
-		return (NULL);
-	ptr[i] = '\0';
-	while (--i >= 0)
-		ptr[i] = s[i];
-	return (ptr);
+	if (n == 0)
+		return (0);
+	pt1 = (unsigned char *) s1;
+	pt2 = (unsigned char *) s2;
+	i = 0;
+	while (pt1[i] && pt2[i] && pt1[i] == pt2[i] && i < n - 1)
+		i++;
+	return (pt1[i] - pt2[i]);
 }

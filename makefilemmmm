@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+         #
+#    By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/14 03:35:01 by orekabe           #+#    #+#              #
-#    Updated: 2022/08/18 04:13:34 by orekabe          ###   ########.fr        #
+#    Updated: 2022/08/16 04:05:08 by bmaaqoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,12 @@ RFLAGS = -lreadline
 
 NAME = minishell
 
-HEADERS = minishell.h libft/libft.h lexer/lexer.h
+INC = -I./include
+
+HEADERS = include/minishell.h include/libft.h include/lexer.h
 
 LIBFT_SRC = libft/ft_bzero.c libft/ft_calloc.c libft/ft_memcpy.c libft/ft_memmove.c \
-	libft/ft_strndup.c libft/ft_strlen.c libft/ft_strncpy.c libft/ft_strncmp.c \
-	libft/ft_lstnew.c libft/ft_lstadd_back.c libft/ft_lstclear.c
+    libft/ft_strndup.c libft/ft_strlen.c libft/ft_strncpy.c
 
 LEXER_SRC = lexer/get_clean_cmd.c lexer/lexer.c
 
@@ -33,12 +34,15 @@ OBJ = $(SRC:%.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $^ -o $@ $(RFLAGS)
+	$(CC) $(CFLAGS) $(RFLAGS) $^ -o $@
+
+$(OBJ):$(SRC) $(HEADERS)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ)
+	rm - rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)
-	
+
 re: fclean all
