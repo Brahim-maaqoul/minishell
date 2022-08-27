@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 22:52:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/25 23:20:19 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/26 04:21:54 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEXER_H
 
 # include "../libft/libft.h"
+# include "../syntax_analyser/syntax_analyser.h"
 
 typedef enum e_tokens
 {
@@ -35,6 +36,8 @@ t_list	*lexer(char *cmd, char *n_cmd, t_list *lst);
 int		check_ws(char c);
 int		check_sc(char c);
 int		check_q(char c, int q);
+int	    get_token(char *str);
+int	    check_q(char c, int flag);
 void	rm_extra_sp(char *n_cmd);
 void	add_need_sp(char *cmd, char *n_cmd);
 char	*get_clean_cmd(char *n_cmd);

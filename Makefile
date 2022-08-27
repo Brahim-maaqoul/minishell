@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+         #
+#    By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/14 03:35:01 by orekabe           #+#    #+#              #
-#    Updated: 2022/08/18 04:13:34 by orekabe          ###   ########.fr        #
+#    Updated: 2022/08/26 04:23:02 by bmaaqoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ LIBFT_SRC = libft/ft_bzero.c libft/ft_calloc.c libft/ft_memcpy.c libft/ft_memmov
 
 LEXER_SRC = lexer/get_clean_cmd.c lexer/lexer.c
 
-SRC = minishell.c $(LIBFT_SRC) $(LEXER_SRC)
+SYN_ANL = syntax_analyser/syntax_analyser.c
+
+SRC = minishell.c $(LIBFT_SRC) $(LEXER_SRC) $(SYN_ANL)
 
 OBJ = $(SRC:%.c=%.o)
 

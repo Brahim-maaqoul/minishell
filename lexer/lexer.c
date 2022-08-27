@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:03:15 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/25 23:18:35 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/26 04:26:35 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ int	get_token(char *str)
 		return (SP);
 	return (WORD);
 }
-
-// t_list	*get_lst_tokens(t_list *lst, char *n_cmd)
-// {
-	
-// }
 
 int	check_q(char c, int flag)
 {
@@ -96,7 +91,8 @@ t_list	*lexer(char *cmd, char *n_cmd, t_list *lst)
 	add_need_sp(cmd, n_cmd);
 	rm_extra_sp(n_cmd);
 	n_cmd = get_clean_cmd(n_cmd);
-	// printf("%s\n", n_cmd);
+	if (!syntax_analyser(n_cmd))
+		return (NULL);
 	lst = tokenizer(lst, n_cmd);
 	return (lst);
 }
