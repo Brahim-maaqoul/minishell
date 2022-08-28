@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 00:48:55 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/08/27 04:16:16 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/08/28 02:21:46 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int check_flag(char c)
 int check_borders(char *str)
 {
     int len;
+    int i;
 
+    i = 0;
     len = ft_strlen(str) - 1;
     if (check_flag(str[0]) == '|' || check_flag(str[0]) == '&')
     {
@@ -33,14 +35,25 @@ int check_borders(char *str)
             printf("syntax error near unexpected token '%c'\n", str[0]);
         return (1);
     }
-    if (check_flag(str[len]) == '<' || check_flag(str[len]) == '>')
-    {
-        if (str[len - 1] == str[len])
-            printf("syntax error near unexpected token `newline'\n");
-        else
-            printf("syntax error near unexpected token '%c'\n", str[len]);
-        return (1);
-    }
+        if (check_flag(str[len]) == '<' || check_flag(str[len]) == '>')
+        {
+            while (str[len - 1] == str[len])
+            {
+                i++;
+                len--;
+            }
+            len = ft_strlen(str) - 1;
+            if (i <= 1)
+            {
+                printf("syntax error near unexpected token `newline'\n");
+                return (1);
+            }
+            else if (i == 2)
+                printf("syntax error near unexpected token '%c'\n", str[len]);
+            else
+                printf("syntax error near unexpected token '%c%c'\n", str[len], str[len]);
+            return (1);
+        }
     return (0);
 }
 
