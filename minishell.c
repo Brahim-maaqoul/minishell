@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 00:06:20 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/27 03:14:21 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/09/04 21:40:47 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	while (1)
 	{
 		cmd = readline("minishell :");
+		add_history(cmd);
 		lst = lexer(cmd, n_cmd, lst);
 	}
 	// while (lst)

@@ -6,7 +6,7 @@
 #    By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/14 03:35:01 by orekabe           #+#    #+#              #
-#    Updated: 2022/08/26 04:23:02 by bmaaqoul         ###   ########.fr        #
+#    Updated: 2022/09/06 13:47:08 by bmaaqoul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBFT_SRC = libft/ft_bzero.c libft/ft_calloc.c libft/ft_memcpy.c libft/ft_memmov
 
 LEXER_SRC = lexer/get_clean_cmd.c lexer/lexer.c
 
-SYN_ANL = syntax_analyser/syntax_analyser.c
+SYN_ANL = syntax_analyser/syntax_analyser.c syntax_analyser/put_err.c syntax_analyser/check_flags.c
 
 SRC = minishell.c $(LIBFT_SRC) $(LEXER_SRC) $(SYN_ANL)
 

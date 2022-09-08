@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 22:52:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/26 04:21:54 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/09/04 20:51:39 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ typedef enum e_tokens
     SQ  = 9,
     WORD = 10,
     VAR = 11,
-    SP = 12
+    SP = 12,
+    RAND = 13
 }       t_tokens;
 
 t_list	*lexer(char *cmd, char *n_cmd, t_list *lst);
@@ -38,6 +39,7 @@ int		check_sc(char c);
 int		check_q(char c, int q);
 int	    get_token(char *str);
 int	    check_q(char c, int flag);
+int	    get_rand(char *str);
 void	rm_extra_sp(char *n_cmd);
 void	add_need_sp(char *cmd, char *n_cmd);
 char	*get_clean_cmd(char *n_cmd);

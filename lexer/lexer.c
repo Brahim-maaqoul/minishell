@@ -6,11 +6,21 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 23:03:15 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/26 04:26:35 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/09/05 00:21:47 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
+
+// int	get_rand(char *str)
+// {
+// 	if (!ft_strncmp(str, "&&", 2) && !ft_strncmp(str, "||", 2)
+// 		&& !ft_strncmp(str, "|", 1) && !ft_strncmp(str, "<", 1)
+// 			&& !ft_strncmp(str, ">", 1) && !ft_strncmp(str, "<<", 2)
+// 				&& !ft_strncmp(str, " ", 1))
+// 		return (0);
+// 	return (1);
+// }
 
 int	get_token(char *str)
 {
@@ -92,7 +102,7 @@ t_list	*lexer(char *cmd, char *n_cmd, t_list *lst)
 	rm_extra_sp(n_cmd);
 	n_cmd = get_clean_cmd(n_cmd);
 	if (!syntax_analyser(n_cmd))
-		return (NULL);
+			return (0);
 	lst = tokenizer(lst, n_cmd);
 	return (lst);
 }
