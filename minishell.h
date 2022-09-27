@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 23:37:03 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/26 01:33:27 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/09/24 01:16:01 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@
 
 # include "libft/libft.h"
 # include "lexer/lexer.h"
-# include "syntax_analyser/syntax_analyser.h"
-
-typedef struct s_tree
-{
-	char			*token;
-	char			*cmd;
-	struct s_tree	*left;
-	struct s_tree	*right;
-}				t_tree;
-
-t_tree	*ft_treenew(char *token, char *cmd);
-void	ft_addleaf(t_tree *root, t_tree *leaf);
-void	ft_addroot(t_tree *root, t_tree *leaf);
+# include "parser/parser.h"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 04:09:35 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/18 04:12:05 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/09/09 16:29:03 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
-	int 			i;
+	int				i;
 	unsigned char	*pt1;
 	unsigned char	*pt2;
 

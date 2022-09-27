@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 00:27:28 by orekabe           #+#    #+#             */
-/*   Updated: 2022/09/24 23:12:06 by orekabe          ###   ########.fr       */
+/*   Created: 2022/09/03 04:31:35 by orekabe           #+#    #+#             */
+/*   Updated: 2022/09/09 16:28:26 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list *lst)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	t_list	*temp;
-	t_list	*curr;
+	char	*ptr;
+	int		i;
+	int		j;
 
-	if (!lst)
-		return ;
-	curr = lst;
-	while (curr != NULL)
+	if (!s1 || !s2)
+		return (NULL);
+	i = 0;
+	j = 0;
+	ptr = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!(ptr))
+		return (NULL);
+	while (s1[i])
 	{
-		temp = curr;
-		curr = curr->next;
-		if (temp->content)
-		{
-			free(temp->content);
-			temp->content = NULL;
-			temp->next = NULL;
-		}
-		if (temp)
-		{
-			free(temp);
-			temp = NULL;
-		}
+		ptr[i] = s1[i];
+		i++;
 	}
+	while (s2[j])
+	{
+		ptr[i] = s2[j];
+		j++;
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }
