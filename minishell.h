@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 23:37:03 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/26 01:33:27 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/09/30 03:20:24 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <paths.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
 # include "libft/libft.h"
 # include "lexer/lexer.h"
 # include "syntax_analyser/syntax_analyser.h"
+#include "execution/execution.h"
+
+long long	g_status;
 
 typedef struct s_tree
 {

@@ -1,0 +1,11 @@
+Makefile
+README.md
+a
+execution
+lexer
+libft
+minishell
+minishell.c
+minishell.h
+minishell.o
+syntax_analyser

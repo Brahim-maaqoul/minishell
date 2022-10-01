@@ -1,49 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_err.c                                          :+:      :+:    :+:   */
+/*   check_par.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/01 22:47:22 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/09/30 02:26:11 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2022/09/26 01:30:26 by bmaaqoul          #+#    #+#             */
+/*   Updated: 2022/09/26 20:20:22 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "syntax_analyser.h"
 
-void	put_err(char *str)
+void	p_err(char *cmd, char *str)
 {
-	write(2, str, ft_strlen(str));
-}
+	int	i;
 
-void	print_errs(char *str, int len, int i)
-{
+	i = 0;
 	put_err("syntax error near unexpected token `");
-	if (len < 2 || len == 3)
-	{
-		ft_putchar_fd(str[i], 2);
-		put_err("'\n");
-	}
-	else
-	{
-		ft_putchar_fd(str[i], 2);
-		ft_putchar_fd(str[i + 1], 2);
-		put_err("'\n");
-	}
+	while (cmd[i] && cmd[i] != ' ')
+		i++;
+	str = ft_strndup(cmd, i);
+	put_err(str);
+	put_err("'\n");
+	free(str);
 }
 
-int	fnct1(int d, int s)
+int	fcnt2(int lp, int rp)
 {
-	if (d % 2 != 0 || s % 2 != 0)
+	if (lp != rp)
 	{
-		put_err("error unclosed quotes\n");
+		put_err("error unclosed parentheses\n");
 		return (0);
 	}
 	return (1);
 }
 
-int	check_quotes(char *str, int c, int lp, int rp)
+int	check_par(char *str, int lp, int rp)
 {
 	int	i;
 	int	d;
@@ -63,10 +56,5 @@ int	check_quotes(char *str, int c, int lp, int rp)
 		else if (str[i] == ')' && (s % 2 == 0 && d % 2 == 0))
 			rp += 1;
 	}
-	if (d % 2 != 0 || s % 2 != 0)
-	{
-		if (!c)
-			return (0);
-	}
-	return (fnct1(d, s));
+	return (fcnt2(lp, rp));
 }
