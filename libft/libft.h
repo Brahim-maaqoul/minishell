@@ -6,7 +6,11 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 02:37:13 by orekabe           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/10/01 23:45:11 by bmaaqoul         ###   ########.fr       */
+=======
+/*   Updated: 2022/09/24 01:16:48 by orekabe          ###   ########.fr       */
+>>>>>>> 2469868c048956f9f6f18e66937d07df6ba93cf2
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +25,12 @@ typedef struct s_list
 {
 	void			*content;
 	int				token;
+<<<<<<< HEAD
 	char			*name;
 	char			*value;
+=======
+	struct s_list	*prev;
+>>>>>>> 2469868c048956f9f6f18e66937d07df6ba93cf2
 	struct s_list	*next;
 }				t_list;
 
@@ -33,10 +41,12 @@ char	*ft_strndup(char *s, int size);
 int		ft_strncmp(char *s1, char *s2, int n);
 int		ft_strcmp(char	*s1, char	*s2);
 char	*ft_strncpy(char *src, char *dst, int size);
+char	*ft_strjoin(char *s1, char *s2);
 void	*ft_memcpy(void *dst, const void *src, int n);
 void	*ft_memmove(void *dst, const void *src, int len);
 t_list	*ft_lstnew(void *content, int token);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+<<<<<<< HEAD
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 char	*ft_substr(char *s, int start, int len);
 char	*ft_strjoin(char *s1, char *s2);
@@ -49,5 +59,8 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putchar_fd(char c, int fd);
 char	*ft_strdup(char *s);
+=======
+void	ft_lstclear(t_list *lst);
+>>>>>>> 2469868c048956f9f6f18e66937d07df6ba93cf2
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 00:26:40 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/16 00:27:03 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/09/09 16:28:13 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		while ((tmp)->next)
 			tmp = (tmp)->next;
 		tmp->next = new;
+		new->prev = tmp;
 	}
 }

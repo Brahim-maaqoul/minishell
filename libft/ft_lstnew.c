@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 00:28:31 by orekabe           #+#    #+#             */
-/*   Updated: 2022/08/18 04:14:13 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/08/28 01:14:21 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_list	*ft_lstnew(void *content, int token)
 		return (NULL);
 	new->content = content;
 	new->token = token;
+	new->prev = NULL;
 	new->next = NULL;
 	return (new);
 }
