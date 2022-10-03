@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 02:37:13 by orekabe           #+#    #+#             */
-/*   Updated: 2022/10/02 00:03:39 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/02 02:17:22 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_list
 	char			*name;
 	char			*value;
 	struct s_list	*next;
+	struct s_list	*prev;
 }				t_list;
 
 int		ft_strlen(char *str);
@@ -38,7 +39,7 @@ void	*ft_memcpy(void *dst, const void *src, int n);
 void	*ft_memmove(void *dst, const void *src, int len);
 t_list	*ft_lstnew(void *content, int token);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstclear(t_list **lst, void (*del)(void *));
+void	ft_lstclear(t_list *lst);
 char	*ft_substr(char *s, int start, int len);
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *s, char c);
