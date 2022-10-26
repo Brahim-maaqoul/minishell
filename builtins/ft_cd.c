@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 02:33:24 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:52:17 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/18 03:07:36 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	update_pwd(t_built *built, char *name, char *value)
 	{
 		if (!ft_strcmp(built->name, name))
 		{
-			built->value = ft_strndup(value, ft_strlen(value));
+			free (built->value);
+			built->value = ft_strdup(value);
 			return ;
 		}
 		built = built->next;
@@ -36,17 +37,22 @@ void	cd_util1(t_built *built)
 	if (!path)
 	{
 		put_err("cd: HOME not set\n");
+		free(path);
+		g_glob.ex_st = 1;
 		return ;
 	}
 	if (chdir(path) == -1)
 	{
-		put_err("cd: ");
-		put_err(path);
-		put_err(": No such file or directory\n");
+		check_dir(path);
+		free (path);
 		return ;
 	}
-	update_pwd(built, "OLDPWD", get_env(built, "PWD"));
+	free (path);
+	path = get_env(built, "PWD");
+	update_pwd(built, "OLDPWD", path);
 	update_pwd(built, "PWD", getcwd(str, sizeof(str)));
+	free (path);
+	g_glob.ex_st = 0;
 }
 
 void	cd_util2(t_built *built)
@@ -60,11 +66,16 @@ void	cd_util2(t_built *built)
 		put_err("cd: error retrieving current directory: getcwd: ");
 		put_err("cannot access parent directories: No such file or directory\n");
 		update_pwd(built, "PWD", path);
+		g_glob.ex_st = 1;
+		free (path);
 		return ;
 	}
 	chdir(path);
-	update_pwd(built, "OLDPWD", get_env(built, "PWD"));
+	path = get_env(built, "PWD");
+	update_pwd(built, "OLDPWD", path);
 	update_pwd(built, "PWD", getcwd(str, sizeof(str)));
+	free (path);
+	g_glob.ex_st = 0;
 }
 
 void	cd_util3(t_built *built)
@@ -76,42 +87,48 @@ void	cd_util3(t_built *built)
 	if (!old)
 	{
 		put_err("cd: OLDPWD not set\n");
+		free (old);
+		g_glob.ex_st = 1;
 		return ;
 	}
 	if (chdir(old) == -1)
 	{
-		put_err("cd: ");
-		put_err(old);
-		put_err(": No such file or directory\n");
+		check_dir(old);
+		free (old);
 		return ;
 	}
 	else
 		printf("%s\n", old);
-	update_pwd(built, "OLDPWD", get_env(built, "PWD"));
+	free (old);
+	old = get_env(built, "PWD");
+	update_pwd(built, "OLDPWD", old);
 	update_pwd(built, "PWD", getcwd(str, sizeof(str)));
+	free (old);
+	g_glob.ex_st = 0;
 }
 
-void	ft_cd(t_built *built, char *cmd)
+void	ft_cd(t_built *built, char **cmd)
 {
-	char	**splited;
 	char	str[1024];
+	char	*old;
 
-	splited = ft_split(cmd, ' ');
-	if (!splited[1] || !ft_strcmp(splited[1], "~"))
+	if (!cmd[1] || !ft_strcmp(cmd[1], "~"))
 		cd_util1(built);
-	else if (!ft_strcmp(splited[1], "."))
+	else if (!ft_strcmp(cmd[1], "."))
 		cd_util2(built);
-	else if (!ft_strcmp(splited[1], "-"))
+	else if (!ft_strcmp(cmd[1], "-"))
 		cd_util3(built);
 	else
 	{
-		if (chdir(splited[1]) == -1)
+		if (chdir(cmd[1]) == -1)
+			check_dir(cmd[1]);
+		else
 		{
-			put_err("cd: ");
-			put_err(splited[1]);
-			put_err(": No such file or directory\n");
+			old = get_env(built, "PWD");
+			update_pwd(built, "OLDPWD", old);
+			update_pwd(built, "PWD", getcwd(str, sizeof(str)));
+			free (old);
+			g_glob.ex_st = 0;
 		}
-		update_pwd(built, "OLDPWD", get_env(built, "PWD"));
-		update_pwd(built, "PWD", getcwd(str, sizeof(str)));
 	}
 }

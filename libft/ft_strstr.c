@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 02:44:49 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/18 20:32:44 by orekabe          ###   ########.fr       */
+/*   Created: 2022/10/19 06:41:28 by orekabe           #+#    #+#             */
+/*   Updated: 2022/10/20 02:50:00 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char *s, int start, int len)
+char	*ft_strstr(char *str, char *to_find)
 {
-	char	*pt;
-	int		j;
+	int	i;
+	int	j;
 
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strndup("", 1));
-	pt = (char *) malloc(sizeof(char) * (len + 1));
-	if (!pt)
-		return (NULL);
-	j = 0;
-	while (s[start] && j < len)
+	i = 0;
+	if (to_find[i] == '\0')
+		return (str);
+	while (str[i] != '\0')
 	{
-		pt[j] = s[start];
-		j++;
-		start++;
+		j = 0;
+		while (str[i + j] == to_find[j])
+		{
+			if (to_find[j + 1] == '\0')
+				return (&str[i] + j);
+			j++;
+		}
+		i++;
 	}
-	pt[j] = 0;
-	return (pt);
+	return (NULL);
 }

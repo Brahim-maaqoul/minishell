@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   and_or.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 02:44:49 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/18 20:32:44 by orekabe          ###   ########.fr       */
+/*   Created: 2022/09/27 03:18:40 by orekabe           #+#    #+#             */
+/*   Updated: 2022/10/18 23:09:21 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "exec.h"
 
-char	*ft_substr(char *s, int start, int len)
+void	and_or(t_tree *node, t_built **built)
 {
-	char	*pt;
-	int		j;
-
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strndup("", 1));
-	pt = (char *) malloc(sizeof(char) * (len + 1));
-	if (!pt)
-		return (NULL);
-	j = 0;
-	while (s[start] && j < len)
-	{
-		pt[j] = s[start];
-		j++;
-		start++;
-	}
-	pt[j] = 0;
-	return (pt);
+	exec_tree(node->left, built);
+	if ((!g_glob.ex_st && node->list->token == 1)
+		|| (g_glob.ex_st && node->list->token == 2))
+		exec_tree(node->right, built);
+	return ;
 }

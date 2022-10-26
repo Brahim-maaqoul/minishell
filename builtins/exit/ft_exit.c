@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 02:34:02 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:47:53 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/20 20:20:09 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ long long	check_num(char *str)
 	return (rst * n);
 }
 
-void	check_arguments(char **args)
+int	check_arguments(char **args)
 {
 	int	i;
 
@@ -48,31 +48,31 @@ void	check_arguments(char **args)
 	if (!args[1])
 	{
 		put_err("exit\n");
-		exit(g_status);
+		exit(g_glob.ex_st);
 	}
-	if (!is_numeric(args[1]))
+	if (args[1] && !is_numeric(args[1]))
 		exit (255);
 	while (args[i])
 		i++;
 	if (i > 2)
 	{
 		put_err("exit\n");
-		put_err("exit: too many arguments\n");
-		g_status = 1;
-		return ;
+		put_err("mini'c'hill: exit: too many arguments\n");
+		g_glob.ex_st = 1;
+		return (1);
 	}
+	return (0);
 }
 
-void	ft_exit(char *args)
+void	ft_exit(char **args)
 {
 	long long	nbr;
-	char		**splited;
 
-	splited = ft_split(args, ' ');
-	check_arguments(splited);
-	check_overflow_min(splited[1]);
-	check_overflow_max(splited[1]);
-	nbr = check_num(splited[1]);
+	if (check_arguments(args))
+		return ;
+	check_overflow_min(args[1]);
+	check_overflow_max(args[1]);
+	nbr = check_num(args[1]);
 	if (nbr == -923372036854775808)
 	{
 		put_err("exit\n");
@@ -80,14 +80,14 @@ void	ft_exit(char *args)
 	}
 	else if (nbr % 256 < 0)
 	{
-		g_status = (nbr % 256) + 256;
+		g_glob.ex_st = (nbr % 256) + 256;
 		put_err("exit\n");
-		exit (g_status);
+		exit (g_glob.ex_st);
 	}
 	else
 	{
-		g_status = nbr % 256;
+		g_glob.ex_st = nbr % 256;
 		put_err("exit\n");
-		exit (g_status);
+		exit (g_glob.ex_st);
 	}
 }

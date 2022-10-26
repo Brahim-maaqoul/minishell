@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 02:35:04 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:47:53 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/18 03:05:50 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,23 @@ int	check_n(char *str)
 	return (0);
 }
 
-void	ft_echo(char *args)
+void	ft_echo(char **args)
 {
-	char	**splited;
 	int		i;
 
 	i = 1;
-	splited = ft_split(args, ' ');
-	while (splited[i] && check_n(splited[i]))
+	while (args[i] && check_n(args[i]))
 		i++;
-	while (splited[i])
+	while (args[i])
 	{
-		ft_putstr_fd(splited[i], 1);
-		if (splited[i + 1])
+		if (args[i][0] == '#')
+			break ;
+		ft_putstr_fd(args[i], 1);
+		if (args[i + 1] && args[i + 1][0] != '#')
 			ft_putchar_fd(' ', 1);
 		i++;
 	}
-	if (!splited[1] || !check_n(splited[1]))
+	if (!args[1] || !check_n(args[1]))
 		printf("\n");
+	g_glob.ex_st = 0;
 }

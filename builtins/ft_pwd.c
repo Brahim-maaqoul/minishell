@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 02:33:22 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:47:53 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:07:51 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,5 @@ void	ft_pwd(void)
 
 	getcwd(str, sizeof(str));
 	printf("%s\n", str);
+	g_glob.ex_st = 0;
 }

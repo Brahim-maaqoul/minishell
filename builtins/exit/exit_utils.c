@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 22:34:57 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:47:53 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/19 07:53:51 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ int	is_numeric(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!(str[i] >= '0' && str[i] <= '9'))
+		if (!ft_isdigit(str[i]))
 		{
+			printf("%c\n", str[i]);
 			print_num_err(str);
 			return (0);
 		}
@@ -44,7 +45,7 @@ void	check_overflow(char *str, char *tab)
 	{
 		put_err("exit\n");
 		print_num_err(str);
-		g_status = 255;
+		g_glob.ex_st = 255;
 		exit (255);
 	}
 }
@@ -68,7 +69,7 @@ void	check_overflow_max(char *str)
 			{
 				put_err("exit\n");
 				print_num_err(str);
-				g_status = 255;
+				g_glob.ex_st = 255;
 				exit (255);
 			}
 			else if (str[i] < tab[i])
@@ -96,7 +97,7 @@ void	check_overflow_min(char *str)
 			{
 				put_err("exit\n");
 				print_num_err(str);
-				g_status = 255;
+				g_glob.ex_st = 255;
 				exit (255);
 			}
 			else if (str[i] < tab[i])

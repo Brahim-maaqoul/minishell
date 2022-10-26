@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:12:00 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:52:17 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:46:28 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ void	print_env(t_built *built)
 			printf("%s=%s\n", built->name, built->value);
 		built = built->next;
 	}
+	g_glob.ex_st = 0;
 }

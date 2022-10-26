@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   wild_card_substr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 02:44:49 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/18 20:32:44 by orekabe          ###   ########.fr       */
+/*   Created: 2022/10/20 03:05:29 by orekabe           #+#    #+#             */
+/*   Updated: 2022/10/20 03:05:48 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "exec.h"
 
-char	*ft_substr(char *s, int start, int len)
+char	*wc_substr(char *s, int len)
 {
-	char	*pt;
+	int		i;
 	int		j;
+	char	*ret;
 
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strndup("", 1));
-	pt = (char *) malloc(sizeof(char) * (len + 1));
-	if (!pt)
-		return (NULL);
+	i = 0;
 	j = 0;
-	while (s[start] && j < len)
+	ret = (char *)malloc(sizeof(char) * len + 1);
+	if (!ret)
+		return (NULL);
+	while (s[i] && i < len)
 	{
-		pt[j] = s[start];
-		j++;
-		start++;
+		if (s[i] != -1 && s[i] != -2)
+		{
+			ret[j] = s[i];
+			j++;
+		}
+		i++;
 	}
-	pt[j] = 0;
-	return (pt);
+	ret[j] = '\0';
+	return (ret);
 }

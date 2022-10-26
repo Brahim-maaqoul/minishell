@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/11 20:14:39 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:52:17 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/18 03:07:19 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,17 @@ int	update_val(t_built *tmp, char *str, char *name, char *value)
 	{
 		if (!ft_strcmp(tmp->name, name))
 		{
+			free(name);
 			if (value)
+			{
+				free(tmp->value);
 				tmp->value = value;
+			}
 			else if (!value && !check_equal(str))
+			{
+				free(tmp->value);
 				tmp->value = ft_strndup("", 1);
+			}
 			return (1);
 		}
 		tmp = tmp->next;
@@ -34,7 +41,7 @@ char	*get_env(t_built *built, char *name)
 	while (built)
 	{
 		if (!ft_strcmp(built->name, name))
-			return (built->value);
+			return (ft_strdup(built->value));
 		built = built->next;
 	}
 	return (NULL);
@@ -85,6 +92,9 @@ int	error_name(t_env *env)
 		put_err("minishell: export: `");
 		put_err(env->name);
 		put_err("': not a valid identifier\n");
+		free (env->name);
+		free (env->value);
+		g_glob.ex_st = 1;
 		return (1);
 	}
 	return (0);

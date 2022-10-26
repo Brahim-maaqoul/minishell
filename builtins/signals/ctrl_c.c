@@ -3,22 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ctrl_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/02 03:35:38 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:47:53 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2022/10/18 19:43:43 by orekabe           #+#    #+#             */
+/*   Updated: 2022/10/18 19:46:01 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtins.h"
 
-void	handler(int sig)
+void	handler_pars(int sig)
 {
-	if (sig == SIGINT)
-	{
-		printf("\n");
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
+	(void) sig;
+	rl_done = 1;
+	g_glob.gl = 0;
+	g_glob.ex_st = 1;
 }

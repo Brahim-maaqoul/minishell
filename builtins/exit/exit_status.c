@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_builtnew.c                                      :+:      :+:    :+:   */
+/*   exit_status.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 18:48:27 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/16 13:23:12 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2022/10/14 11:43:01 by bmaaqoul          #+#    #+#             */
+/*   Updated: 2022/10/18 03:14:30 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../builtins.h"
 
-t_built	*ft_builtnew(char *name, char *value)
+int	exit_status(int status)
 {
-	t_built	*new;
-
-	new = (t_built *)malloc(sizeof(t_built));
-	if (!new)
-		return (NULL);
-	new->name = name;
-	new->value = value;
-	new->next = NULL;
-	return (new);
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	if (WTERMSIG(status) != SIGINT)
+	{
+		if (WTERMSIG(status) == SIGQUIT)
+			printf("Quit: ");
+		printf("%d", WTERMSIG(status));
+	}
+	printf("\n");
+	return (128 + WTERMSIG(status));
 }

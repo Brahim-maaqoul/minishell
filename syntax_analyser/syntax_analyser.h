@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_analyser.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 00:11:42 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/02 02:15:00 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/09/27 00:51:21 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		check_middle(char *str);
 int		handle_red(char *str, int i);
 int		handle_pipe(char *str, int i);
 void	put_err(char *str);
+void	ft_putchar_fd(char c, int fd);
 void	print_errs(char *str, int len, int i);
 int		check_par(char *str, int lp, int rp);
 int		fcnt2(int lp, int rp);

@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   minishell_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 02:44:49 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/18 20:32:44 by orekabe          ###   ########.fr       */
+/*   Created: 2022/10/20 19:59:15 by orekabe           #+#    #+#             */
+/*   Updated: 2022/10/20 20:00:41 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-char	*ft_substr(char *s, int start, int len)
+void	ctrl_d(char *cmd)
 {
-	char	*pt;
-	int		j;
-
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strndup("", 1));
-	pt = (char *) malloc(sizeof(char) * (len + 1));
-	if (!pt)
-		return (NULL);
-	j = 0;
-	while (s[start] && j < len)
+	if (!cmd && g_glob.gl)
 	{
-		pt[j] = s[start];
-		j++;
-		start++;
+		printf("exit\n");
+		exit (g_glob.ex_st);
 	}
-	pt[j] = 0;
-	return (pt);
+}
+
+int	event(void)
+{
+	return (0);
 }

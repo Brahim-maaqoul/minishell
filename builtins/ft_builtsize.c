@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_builtnew.c                                      :+:      :+:    :+:   */
+/*   ft_builtsize.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 18:48:27 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/16 13:23:12 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2022/10/14 11:45:43 by bmaaqoul          #+#    #+#             */
+/*   Updated: 2022/10/18 03:12:40 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-t_built	*ft_builtnew(char *name, char *value)
+int	ft_builtsize(t_built *lst)
 {
-	t_built	*new;
+	int	i;
 
-	new = (t_built *)malloc(sizeof(t_built));
-	if (!new)
-		return (NULL);
-	new->name = name;
-	new->value = value;
-	new->next = NULL;
-	return (new);
+	if (!lst)
+		return (0);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_builtnew.c                                      :+:      :+:    :+:   */
+/*   check_dir.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 18:48:27 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/16 13:23:12 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2022/10/18 02:06:12 by bmaaqoul          #+#    #+#             */
+/*   Updated: 2022/10/18 03:07:51 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-t_built	*ft_builtnew(char *name, char *value)
+void	check_dir(char *path)
 {
-	t_built	*new;
-
-	new = (t_built *)malloc(sizeof(t_built));
-	if (!new)
-		return (NULL);
-	new->name = name;
-	new->value = value;
-	new->next = NULL;
-	return (new);
+	put_err("cd: ");
+	put_err(path);
+	put_err(": No such file or directory\n");
+	g_glob.ex_st = 1;
 }

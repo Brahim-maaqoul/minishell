@@ -6,16 +6,23 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 03:27:49 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:47:53 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/18 03:08:50 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../builtins.h"
 
+void	update_equal(t_env *env, char *str, int len)
+{
+	env->name = ft_substr(str, 0, get_equal(str));
+	env->value = ft_substr(str, get_equal(str) + 1, len);
+}
+
 void	check_env(t_env *env, t_built *tmp, char *str)
 {
 	int		len;
 	char	*val;
+	char	*plusval;
 
 	len = ft_strlen(str) - get_equal(str);
 	if (!get_equal(str))
@@ -27,13 +34,14 @@ void	check_env(t_env *env, t_built *tmp, char *str)
 	{
 		env->name = ft_substr(str, 0, get_equal(str) - 1);
 		val = get_env(tmp, env->name);
-		env->value = ft_substr(str, get_equal(str) + 1, len);
+		plusval = ft_substr(str, get_equal(str) + 1, len);
 		if (val)
-			env->value = ft_strjoin(val, env->value);
+		{
+			env->value = ft_strjoin(val, plusval);
+			free(plusval);
+			free (val);
+		}
 	}
 	else if (get_equal(str))
-	{
-		env->name = ft_substr(str, 0, get_equal(str));
-		env->value = ft_substr(str, get_equal(str) + 1, len);
-	}
+		update_equal(env, str, len);
 }

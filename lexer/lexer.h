@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 22:52:18 by orekabe           #+#    #+#             */
-/*   Updated: 2022/09/24 01:49:36 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/10/17 23:39:00 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,9 @@ int		check_q(char c, int q);
 void	rm_extra_sp(char *n_cmd);
 void	add_need_sp(char *cmd, char *n_cmd);
 char	*get_clean_cmd(char *n_cmd);
+int		get_q(char	*n_cmd);
+char	*fill_pipe(char *cmd);
+int		get_token(char *str);
+void	init_lx_var(t_lx_var *lx_var, t_list *lst);
 
 #endif

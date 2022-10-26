@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
+/*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 02:44:33 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/02 02:18:11 by bmaaqoul         ###   ########.fr       */
+/*   Created: 2022/09/03 04:31:35 by orekabe           #+#    #+#             */
+/*   Updated: 2022/09/09 16:28:26 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 char	*ft_strjoin(char *s1, char *s2)
 {
-	char	*t;
-	int		k;
+	char	*ptr;
 	int		i;
 	int		j;
 
@@ -23,20 +22,20 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	i = 0;
 	j = 0;
-	k = ft_strlen(s1) + ft_strlen(s2);
-	t = (char *) malloc(sizeof(char) * (k + 1));
-	if (!t)
+	ptr = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!(ptr))
 		return (NULL);
 	while (s1[i])
 	{
-		t[i] = s1[i];
+		ptr[i] = s1[i];
 		i++;
 	}
 	while (s2[j])
 	{
-		t[i++] = s2[j];
+		ptr[i] = s2[j];
 		j++;
+		i++;
 	}
-	t[i] = '\0';
-	return (t);
+	ptr[i] = '\0';
+	return (ptr);
 }

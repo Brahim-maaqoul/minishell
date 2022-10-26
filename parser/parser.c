@@ -6,7 +6,7 @@
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 19:00:38 by orekabe           #+#    #+#             */
-/*   Updated: 2022/09/24 23:29:56 by orekabe          ###   ########.fr       */
+/*   Updated: 2022/10/20 17:58:34 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,11 @@ t_tree	*ft_treenew(t_list *list)
 	new = (t_tree *)malloc(sizeof(t_tree));
 	if (!new)
 		return (NULL);
+	new->exp_h = 1;
 	new->list = list;
 	new->left = NULL;
 	new->right = NULL;
+	new->args = NULL;
 	return (new);
 }
 
@@ -43,5 +45,6 @@ t_tree	*parser(t_list *list)
 	t_tree	*root;
 
 	root = ast_lvl1(list);
+	get_heredoc(root);
 	return (root);
 }

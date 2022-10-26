@@ -6,7 +6,7 @@
 /*   By: bmaaqoul <bmaaqoul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/17 21:42:35 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/03 03:52:17 by bmaaqoul         ###   ########.fr       */
+/*   Updated: 2022/10/16 19:25:54 by bmaaqoul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,26 +63,27 @@ t_built	*remove_env(t_built *head, char *str)
 	return (head);
 }
 
-void	ft_unset(t_built **built, char *cmd)
+void	ft_unset(t_built **built, char **cmd)
 {
-	char	**splited;
 	int		j;
 	int		b;
 
 	j = 1;
-	splited = ft_split(cmd, ' ');
-	while (splited[j])
+	if (!cmd[j])
+		g_glob.ex_st = 0;
+	while (cmd[j])
 	{
 		b = 0;
-		if (!check_err(splited[j]))
+		if (!check_err(cmd[j]))
 		{
 			put_err("minishell: unset: `");
-			put_err(splited[j]);
+			put_err(cmd[j]);
 			put_err("': not a valid identifier\n");
 			b = 1;
+			g_glob.ex_st = 1;
 		}
 		if (!b)
-			*built = remove_env(*built, splited[j]);
+			*built = remove_env(*built, cmd[j]);
 		j++;
 	}
 }

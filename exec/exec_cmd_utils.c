@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   exec_cmd_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: orekabe <orekabe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/11 02:44:49 by bmaaqoul          #+#    #+#             */
-/*   Updated: 2022/10/18 20:32:44 by orekabe          ###   ########.fr       */
+/*   Created: 2022/10/18 22:45:46 by orekabe           #+#    #+#             */
+/*   Updated: 2022/10/20 01:04:49 by orekabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "exec.h"
 
-char	*ft_substr(char *s, int start, int len)
+void	cmd_nf(char *cmd)
 {
-	char	*pt;
-	int		j;
+	write(2, "mini'c'hill: ", 13);
+	put_err(cmd);
+	write(2, ": command not found\n", 20);
+	g_glob.ex_st = 127;
+}
 
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen(s))
-		return (ft_strndup("", 1));
-	pt = (char *) malloc(sizeof(char) * (len + 1));
-	if (!pt)
-		return (NULL);
-	j = 0;
-	while (s[start] && j < len)
+void	free_tab(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i])
 	{
-		pt[j] = s[start];
-		j++;
-		start++;
+		free(args[i]);
+		i++;
 	}
-	pt[j] = 0;
-	return (pt);
+	free(args);
 }
