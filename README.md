@@ -1,4 +1,5 @@
 MiniShell
+
 MiniShell is a simple shell implementation developed as a project for the 42 school curriculum.
 
 Features
